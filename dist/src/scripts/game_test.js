@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const Player_1 = require("../classes/Player");
+const Room_1 = require("../classes/Room");
+const player = new Player_1.Player("Fernando", "");
+console.log(player);
+const room = new Room_1.Room(player, "primeira sala", "");
+console.log(room);
+console.log("aumentou os pontos do fernando");
+player.addScore(25);
+console.log(room);
+console.log("aumentou os pontos do fernando mais uma vez");
+player.addScore(10);
+console.log(room);
+console.log("Pontuação final: ", player.totalyPoints());
