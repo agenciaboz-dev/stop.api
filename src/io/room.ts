@@ -1,6 +1,6 @@
 import { Socket } from "socket.io"
-import { Room, rooms } from "../classes/Room"
-import { Player } from "../classes/Player"
+import { Room, rooms } from "../class/Room"
+import { Player } from "../class/Player"
 
 const create = async (socket: Socket, roomForm: RoomForm, playerForm: PlayerForm) => {
     console.log("creating new room")

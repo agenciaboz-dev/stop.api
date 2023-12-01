@@ -9,8 +9,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Room_1 = require("../classes/Room");
-const Player_1 = require("../classes/Player");
+const Room_1 = require("../class/Room");
+const Player_1 = require("../class/Player");
 const create = (socket, roomForm, playerForm) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("creating new room");
     const host = new Player_1.Player(playerForm.name, playerForm.icon);

@@ -1,5 +1,5 @@
-import { Player } from "../classes/Player"
-import { Room } from "../classes/Room"
+import { Player } from "../class/Player"
+import { Room } from "../class/Room"
 
 const player = new Player("Fernando", "")
 

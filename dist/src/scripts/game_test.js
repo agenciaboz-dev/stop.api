@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Player_1 = require("../classes/Player");
-const Room_1 = require("../classes/Room");
+const Player_1 = require("../class/Player");
+const Room_1 = require("../class/Room");
 const player = new Player_1.Player("Fernando", "");
 console.log(player);
 const room = new Room_1.Room(player, "primeira sala", "");
