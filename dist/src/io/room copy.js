@@ -13,11 +13,11 @@ const Room_1 = require("../class/Room");
 const Player_1 = require("../class/Player");
 const create = (socket, roomForm, playerForm) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("creating new room");
-    // const host = new Player(playerForm.name, playerForm.icon)
-    console.log(playerForm);
-    const room = new Room_1.Room(playerForm, roomForm.name, roomForm.password);
+    const host = new Player_1.Player(playerForm.name, playerForm.icon);
+    console.log(host);
+    const room = new Room_1.Room(host, roomForm.name, roomForm.password);
     console.log(room);
-    socket.emit("room:new:success", { room });
+    socket.emit("room:new:success", { room, player: host });
     socket.broadcast.emit("room:new", room);
 });
 const join = (socket, room_id, playerForm) => __awaiter(void 0, void 0, void 0, function* () {

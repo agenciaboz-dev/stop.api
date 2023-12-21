@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.handleSocket = exports.getIoInstance = exports.initializeIoServer = void 0;
 const socket_io_1 = require("socket.io");
 const room_1 = __importDefault(require("./room"));
+const player_1 = __importDefault(require("./player"));
 let io = null;
 const initializeIoServer = (server) => {
     io = new socket_io_1.Server(server, {
@@ -26,7 +27,9 @@ const handleSocket = (socket) => {
     socket.on("disconnect", () => {
         console.log(`disconnected: ${socket.id}`);
     });
-    socket.on("room:new", (data) => room_1.default.create(socket, data.room, data.player));
+    socket.on("player:new", (data) => player_1.default.create(socket, data));
+    socket.on("player:find", (playerId) => player_1.default.find(socket, playerId));
+    socket.on("room:new", (roomForm, player) => room_1.default.create(socket, roomForm, player));
     socket.on("room:join", (data) => room_1.default.join(socket, data.room_id, data.player));
     socket.on("room:list", () => room_1.default.list(socket));
 };

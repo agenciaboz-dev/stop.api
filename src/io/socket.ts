@@ -2,9 +2,9 @@ import { Server as SocketIoServer } from "socket.io"
 import { Server as HttpServer } from "http"
 import { Server as HttpsServer } from "https"
 import { Socket } from "socket.io"
-import { Client, ClientBag } from "../definitions/client"
-import user from "./user"
 import room from "./room"
+import player from "./player"
+import { Player } from "../class/Player"
 
 let io: SocketIoServer | null = null
 
@@ -29,7 +29,10 @@ export const handleSocket = (socket: Socket) => {
         console.log(`disconnected: ${socket.id}`)
     })
 
-    socket.on("room:new", (data: { room: RoomForm; player: PlayerForm }) => room.create(socket, data.room, data.player))
+    socket.on("player:new", (data: PlayerForm) => player.create(socket, data))
+    socket.on("player:find", (playerId: number) => player.find(socket, playerId))
+
+    socket.on("room:new", (roomForm: RoomForm, player: Player) => room.create(socket, roomForm, player))
     socket.on("room:join", (data: { room_id: string; player: PlayerForm }) => room.join(socket, data.room_id, data.player))
     socket.on("room:list", () => room.list(socket))
 }

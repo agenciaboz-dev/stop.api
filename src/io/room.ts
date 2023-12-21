@@ -2,14 +2,14 @@ import { Socket } from "socket.io"
 import { Room, rooms } from "../class/Room"
 import { Player } from "../class/Player"
 
-const create = async (socket: Socket, roomForm: RoomForm, playerForm: PlayerForm) => {
+const create = async (socket: Socket, roomForm: RoomForm, playerForm: Player) => {
     console.log("creating new room")
-    const host = new Player(playerForm.name, playerForm.icon)
-    console.log(host)
-    const room = new Room(host, roomForm.name, roomForm.password)
+    // const host = new Player(playerForm.name, playerForm.icon)
+    console.log(playerForm)
+    const room = new Room(playerForm, roomForm.name, roomForm.password)
     console.log(room)
 
-    socket.emit("room:new:success", { room, player: host })
+    socket.emit("room:new:success", { room })
     socket.broadcast.emit("room:new", room)
 }
 
