@@ -30,7 +30,9 @@ const handleSocket = (socket) => {
     socket.on("player:new", (data) => player_1.default.create(socket, data));
     socket.on("player:find", (playerId) => player_1.default.find(socket, playerId));
     socket.on("room:new", (roomForm, player) => room_1.default.create(socket, roomForm, player));
-    socket.on("room:join", (data) => room_1.default.join(socket, data.room_id, data.player));
+    socket.on("room:join", (room_id, player) => room_1.default.join(socket, room_id, player));
+    socket.on("room:leave", (roomId, playerId) => room_1.default.leave(socket, roomId, playerId));
     socket.on("room:list", () => room_1.default.list(socket));
+    socket.on("room:players", (roomId) => room_1.default.listPlayers(socket, roomId));
 };
 exports.handleSocket = handleSocket;

@@ -23,4 +23,8 @@ export class Room {
     addPlayer = (player: Player) => {
         this.players.push(player)
     }
+    removePlayer = (playerId: string) => {
+        console.log(playerId)
+        this.players = this.players.filter((player) => player.id !== playerId)
+    }
 }

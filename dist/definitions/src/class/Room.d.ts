@@ -8,4 +8,5 @@ export declare class Room {
     players: Player[];
     constructor(host: Player, room_name: string, password?: string);
     addPlayer: (player: Player) => void;
+    removePlayer: (playerId: string) => void;
 }

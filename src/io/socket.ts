@@ -33,6 +33,8 @@ export const handleSocket = (socket: Socket) => {
     socket.on("player:find", (playerId: number) => player.find(socket, playerId))
 
     socket.on("room:new", (roomForm: RoomForm, player: Player) => room.create(socket, roomForm, player))
-    socket.on("room:join", (data: { room_id: string; player: PlayerForm }) => room.join(socket, data.room_id, data.player))
+    socket.on("room:join", (room_id: string, player: Player) => room.join(socket, room_id, player))
+    socket.on("room:leave", (roomId: string, playerId: string) => room.leave(socket, roomId, playerId))
     socket.on("room:list", () => room.list(socket))
+    socket.on("room:players", (roomId: string) => room.listPlayers(socket, roomId))
 }
